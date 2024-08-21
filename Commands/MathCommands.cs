@@ -11,7 +11,7 @@ public class MathCommands : BaseCommandModule
         var sum = numbers.Sum();
 
         var formattedNumbers = numbers.Select(n => n < 0 ? $"({n})" : n.ToString());
-        var quotient = string.Join(" - ", formattedNumbers);
+        var quotient = string.Join(" + ", formattedNumbers);
 
         await ctx.Channel.SendMessageAsync($"``{quotient} = {sum}``");
     }

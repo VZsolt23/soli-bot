@@ -19,6 +19,24 @@ public class DefaultCommands : BaseCommandModule
         await ctx.Channel.SendMessageAsync($"Szia {ctx.User.Mention}");
     }
 
+    [Command("help")]
+    public async Task HelpCommand(CommandContext ctx)
+    {
+        var message = new DiscordEmbedBuilder
+            {
+                Title = "Soli Help Menu",
+                Description = "List of available commands:",
+                Color = DiscordColor.Gold,
+            }
+            .AddField("+help", "Shows a list of commands")
+            .AddField("+ping", "Ping pong")
+            .AddField("+hello", "A welcome message")
+            .AddField("+hello", "A welcome message")
+            .AddField("+cardgame", "Play a cardgame vs Soli");
+
+        await ctx.Channel.SendMessageAsync(embed: message);
+    }
+
     [Command("embed")]
     public async Task EmbedMessageCommand(CommandContext ctx)
     {
@@ -79,6 +97,16 @@ public class DefaultCommands : BaseCommandModule
             };
 
             await ctx.Channel.SendMessageAsync(embed: winMessage);
+        }
+        else if (userCard.SelectedNumber == botCard.SelectedNumber)
+        {
+            var drawMessage = new DiscordEmbedBuilder
+            {
+                Title = "Draw!",
+                Color = DiscordColor.Grayple
+            };
+
+            await ctx.Channel.SendMessageAsync(embed: drawMessage);
         }
         else
         {

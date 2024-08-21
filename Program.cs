@@ -39,7 +39,7 @@ public class Program
             StringPrefixes = new[] { config["Prefix"] ?? "+" },
             EnableMentionPrefix = true,
             EnableDms = true,
-            EnableDefaultHelp = true // TODO: false
+            EnableDefaultHelp = false
         };
 
         _commands = _client.UseCommandsNext(commandConfig);
